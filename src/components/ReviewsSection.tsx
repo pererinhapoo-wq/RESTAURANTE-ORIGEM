@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { REVIEWS } from '../data/restaurantData';
 import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
 
 export const ReviewsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -12,16 +14,24 @@ export const ReviewsSection: React.FC = () => {
       className="py-24 sm:py-32 relative overflow-hidden transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Eyebrow */}
-        <div className="text-center mb-12 sm:mb-16">
-          <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-            Crítica & Reconhecimento
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide mt-2">
-            Vozes sobre a nossa mesa
-          </h2>
+        <AnimatedSection>
+        {/* Eyebrow with Title Reveal */}
+        <div className="mb-12 sm:mb-16">
+          <TitleReveal
+            align="center"
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+                Crítica & Reconhecimento
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide mt-2">
+                Vozes sobre a nossa mesa
+              </h2>
+            }
+          />
         </div>
 
         {/* Editorial Pull-Quote Frame - Distinct from generic cards */}
@@ -99,6 +109,7 @@ export const ReviewsSection: React.FC = () => {
             </button>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

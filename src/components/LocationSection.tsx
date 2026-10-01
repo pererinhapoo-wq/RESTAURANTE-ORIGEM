@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, Copy, Check, Car, Compass, Navigation } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
 
 export const LocationSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -17,15 +19,22 @@ export const LocationSection: React.FC = () => {
       className="py-24 sm:py-32 relative transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-14 sm:mb-18 space-y-2">
-          <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
-            <Compass size={14} />
-            Território & Acolhimento
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
-            Localização & Horários
-          </h2>
+        <AnimatedSection>
+        {/* Section Header with Title Reveal */}
+        <div className="mb-14 sm:mb-18">
+          <TitleReveal
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
+                <Compass size={14} />
+                Território & Acolhimento
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
+                Localização & Horários
+              </h2>
+            }
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -187,6 +196,7 @@ export const LocationSection: React.FC = () => {
             </div>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

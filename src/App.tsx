@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Concept } from './components/Concept';
+import { SeasonalHarvest } from './components/SeasonalHarvest';
 import { InteractiveMenu } from './components/InteractiveMenu';
 import { FeaturedDish } from './components/FeaturedDish';
 import { ChefSection } from './components/ChefSection';
@@ -52,6 +53,13 @@ export default function App() {
     }
   };
 
+  const handleSelectHarvestDish = (_dishId: string) => {
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'bg-[#0a140f] text-[#f7f5f0]' : 'bg-[#f7f5f0] text-[#1b2b23]'
@@ -72,6 +80,9 @@ export default function App() {
 
         {/* Concept Section */}
         <Concept />
+
+        {/* Seasonal Harvest Section (Asymmetrical Layout highlighting peak season ingredients) */}
+        <SeasonalHarvest onSelectDish={handleSelectHarvestDish} />
 
         {/* Interactive Menu Section */}
         <InteractiveMenu />
@@ -109,3 +120,4 @@ export default function App() {
     </div>
   );
 }
+

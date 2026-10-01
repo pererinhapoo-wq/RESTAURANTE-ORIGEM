@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, Users, Phone, User, MessageSquare, CheckCircle, Info, RefreshCw } from 'lucide-react';
 import { ReservationData } from '../types';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
 
 export const ReservationSection: React.FC = () => {
   // Pre-fill tomorrow's date
@@ -95,21 +97,29 @@ export const ReservationSection: React.FC = () => {
       className="py-24 sm:py-32 relative overflow-hidden transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Eyebrow Header */}
-        <div className="text-center mb-12 sm:mb-16 space-y-3">
-          <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-            Experiência à Mesa
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-          </span>
-
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
-            Reserve seu Momento
-          </h2>
-
-          <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light max-w-lg mx-auto">
-            Dispomos de apenas 14 mesas para garantir atendimento intimista e ritmo impecável de serviço.
-          </p>
+        <AnimatedSection>
+        {/* Eyebrow Header with Title Reveal */}
+        <div className="mb-12 sm:mb-16">
+          <TitleReveal
+            align="center"
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+                Experiência à Mesa
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
+                Reserve seu Momento
+              </h2>
+            }
+            subtitle={
+              <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light max-w-lg mx-auto">
+                Dispomos de apenas 14 mesas para garantir atendimento intimista e ritmo impecável de serviço.
+              </p>
+            }
+          />
         </div>
 
         {/* Card or Confirmation */}
@@ -394,6 +404,7 @@ export const ReservationSection: React.FC = () => {
             </form>
           )}
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

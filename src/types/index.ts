@@ -49,3 +49,26 @@ export interface ReservationData {
   phone: string;
   notes: string;
 }
+
+export interface SeasonalIngredient {
+  id: string;
+  name: string;
+  scientificName: string;
+  biome: string;
+  region: string;
+  peakPeriod: string;
+  harvestCycle: 'Pico Máximo' | 'Início de Safra' | 'Manejo Sustentável' | 'Colheita Manual';
+  producer: string;
+  description: string;
+  curatorNote: string;
+  dishId: string;
+  dishName: string;
+  imageUrl: string;
+  sensoryScores: {
+    acidez: number; // 0 to 10
+    docura: number;
+    aromaterroso: number;
+    mineralidade: number;
+  };
+}
+

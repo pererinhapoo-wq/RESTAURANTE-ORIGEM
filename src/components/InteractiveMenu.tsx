@@ -2,6 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { MENU_CATEGORIES, MENU_ITEMS } from '../data/restaurantData';
 import { MenuCategory } from '../types';
 import { Sparkles, Wine, Search } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { motion, AnimatePresence } from 'framer-motion';
+import { TitleReveal } from './TitleReveal';
 
 interface InteractiveMenuProps {
   onSelectDishForReservation?: (dishName: string) => void;
@@ -43,21 +46,29 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ onSelectDishFo
       className="py-24 sm:py-32 relative transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 space-y-3">
-          <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-            Cardápio Autoral
-            <span className="w-6 h-[1px] bg-[#c58253]" />
-          </span>
-
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
-            Criações de Época
-          </h2>
-
-          <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light leading-relaxed max-w-xl mx-auto">
-            Uma sinfonia entre os biomas do Brasil e o rigor da alta gastronomia. Cada prato é finalizado na hora com ingredientes frescos e manejados conscientemente.
-          </p>
+        <AnimatedSection>
+        {/* Section Header with Title Reveal */}
+        <div className="max-w-3xl mx-auto mb-14 sm:mb-18">
+          <TitleReveal
+            align="center"
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+                Cardápio Autoral
+                <span className="w-6 h-[1px] bg-[#c58253]" />
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
+                Criações de Época
+              </h2>
+            }
+            subtitle={
+              <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light leading-relaxed max-w-xl mx-auto">
+                Uma sinfonia entre os biomas do Brasil e o rigor da alta gastronomia. Cada prato é finalizado na hora com ingredientes frescos e manejados conscientemente.
+              </p>
+            }
+          />
         </div>
 
         {/* Category Filter Navigation Bar */}
@@ -230,6 +241,7 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ onSelectDishFo
             Dispomos também do <span className="font-semibold text-[#12231c] dark:text-[#f7f5f0]">Menu Degustação em 7 Etapas</span> (R$ 380 por pessoa / Harmonização R$ 220), servido exclusivamente para a mesa inteira mediante solicitação no salão.
           </p>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowDownRight, Compass, Sparkles } from 'lucide-react';
 import { ASSET_IMAGES } from '../data/restaurantData';
+import { motion } from 'framer-motion';
 
 interface HeroProps {
   onOpenReservation: () => void;
@@ -20,7 +21,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
         {/* Asymmetrical Editorial Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Typographic & Conceptual Identity (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8"
+          >
             {/* Subtle editorial kicker */}
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[#c58253] font-medium">
               <span className="w-8 h-[1px] bg-[#c58253]" />
@@ -29,14 +35,28 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
               <span className="hidden sm:inline-block">Biomas & Alta Técnica</span>
             </div>
 
-            {/* Main Brand Title & Statement */}
+            {/* Main Brand Title & Statement with Mask Reveal */}
             <div className="space-y-3">
-              <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-[0.14em] font-light text-[#12231c] dark:text-[#f7f5f0] uppercase leading-[0.95]">
-                ORIGEM
-              </h1>
-              <p className="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-[#3b4c42] dark:text-[#d3ccbe] font-normal leading-tight">
-                Cozinha contemporânea brasileira.
-              </p>
+              <div className="overflow-hidden py-1">
+                <motion.h1
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: '0%', opacity: 1 }}
+                  transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-[0.14em] font-light text-[#12231c] dark:text-[#f7f5f0] uppercase leading-[0.95]"
+                >
+                  ORIGEM
+                </motion.h1>
+              </div>
+              <div className="overflow-hidden py-0.5">
+                <motion.p
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: '0%', opacity: 1 }}
+                  transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-[#3b4c42] dark:text-[#d3ccbe] font-normal leading-tight"
+                >
+                  Cozinha contemporânea brasileira.
+                </motion.p>
+              </div>
             </div>
 
             {/* Core Manifesto Quote */}
@@ -78,10 +98,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
               <span aria-hidden="true" className="text-[#c58253]/50">·</span>
               <span>Carta de Vinhos Nacionais</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: High-Impact Fine Dining Visual with Asymmetrical Frame (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative"
+          >
             {/* Decorative background framing offset */}
             <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-tr from-[#12231c]/10 to-[#c58253]/15 dark:from-[#1b3026] dark:to-[#382618] rounded-2xl transform rotate-1 scale-[1.02] -z-10" />
 
@@ -119,9 +144,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
                 <span className="text-[8px] uppercase tracking-wider text-[#526359] dark:text-[#a0aca1]">2026</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+

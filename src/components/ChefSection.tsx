@@ -1,6 +1,8 @@
 import React from 'react';
 import { ASSET_IMAGES } from '../data/restaurantData';
 import { Award, Compass, HeartHandshake } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
 
 export const ChefSection: React.FC = () => {
   return (
@@ -9,6 +11,7 @@ export const ChefSection: React.FC = () => {
       className="py-24 sm:py-32 relative overflow-hidden transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection>
         {/* Unique Asymmetric Layout for Chef Helena */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Portrait with Architectural Stature (5 cols) */}
@@ -56,18 +59,24 @@ export const ChefSection: React.FC = () => {
 
           {/* Right Column: Biography, Philosophy & Sign-Off (7 cols) */}
           <div className="lg:col-span-7 space-y-8 lg:pl-6">
-            <div className="space-y-3">
-              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
-                <span className="w-6 h-[1px] bg-[#c58253]" />
-                Nossa Cozinha & Liderança
-              </span>
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide leading-tight">
-                Helena Duarte
-              </h2>
-              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#63746a] dark:text-[#97a398]">
-                Pesquisa territorial, rigor técnico e memória afetiva
-              </p>
-            </div>
+            <TitleReveal
+              eyebrow={
+                <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
+                  <span className="w-6 h-[1px] bg-[#c58253]" />
+                  Nossa Cozinha & Liderança
+                </span>
+              }
+              title={
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide leading-tight">
+                  Helena Duarte
+                </h2>
+              }
+              subtitle={
+                <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#63746a] dark:text-[#97a398]">
+                  Pesquisa territorial, rigor técnico e memória afetiva
+                </p>
+              }
+            />
 
             {/* Short Biography */}
             <div className="space-y-4 text-sm sm:text-base text-[#46564e] dark:text-[#b4beb6] font-light leading-relaxed">
@@ -121,6 +130,7 @@ export const ChefSection: React.FC = () => {
             </div>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

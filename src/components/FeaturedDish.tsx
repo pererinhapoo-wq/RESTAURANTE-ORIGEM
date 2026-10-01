@@ -1,6 +1,9 @@
 import React from 'react';
 import { ASSET_IMAGES } from '../data/restaurantData';
 import { Sparkles, ArrowRight, UtensilsCrossed, Waves } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
+import { motion } from 'framer-motion';
 
 interface FeaturedDishProps {
   onOpenReservation: () => void;
@@ -17,16 +20,23 @@ export const FeaturedDish: React.FC<FeaturedDishProps> = ({ onOpenReservation })
       <div className="absolute bottom-10 -left-32 w-96 h-96 bg-[#1a382c]/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+        <AnimatedSection>
+        {/* Section Header with Title Reveal */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6 border-b border-[#c58253]/20 pb-8">
           <div>
-            <span className="text-xs uppercase tracking-[0.28em] text-[#e4a77d] font-semibold flex items-center gap-2 mb-2">
-              <Sparkles size={14} />
-              Criação Assinatura
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#f7f5f0] font-light tracking-wide">
-              Prato Destaque
-            </h2>
+            <TitleReveal
+              eyebrow={
+                <span className="text-xs uppercase tracking-[0.28em] text-[#e4a77d] font-semibold flex items-center gap-2 mb-2">
+                  <Sparkles size={14} />
+                  Criação Assinatura
+                </span>
+              }
+              title={
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#f7f5f0] font-light tracking-wide">
+                  Prato Destaque
+                </h2>
+              }
+            />
           </div>
 
           <div className="text-right">
@@ -41,9 +51,18 @@ export const FeaturedDish: React.FC<FeaturedDishProps> = ({ onOpenReservation })
 
         {/* Big Photography & Editorial Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Large High-Fidelity Photography (7 cols) */}
+          {/* Large High-Fidelity Photography (7 cols) with Scale-Up Reveal */}
           <div className="lg:col-span-7 relative group">
-            <div className="relative overflow-hidden rounded-xl border border-[#c58253]/35 shadow-2xl bg-black/40">
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{
+                duration: 0.95,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="relative overflow-hidden rounded-xl border border-[#c58253]/35 shadow-2xl bg-black/40"
+            >
               <img
                 src={ASSET_IMAGES.peixeDaCosta}
                 alt="Peixe da Costa grelhado com purê de raízes brasileiras e molho cítrico"
@@ -70,7 +89,7 @@ export const FeaturedDish: React.FC<FeaturedDishProps> = ({ onOpenReservation })
                   Cocção na brasa a 240°C
                 </span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Inset copper detail border */}
             <div className="hidden sm:block absolute -bottom-4 -right-4 w-full h-full border border-[#c58253]/20 rounded-xl pointer-events-none -z-10" />
@@ -129,6 +148,7 @@ export const FeaturedDish: React.FC<FeaturedDishProps> = ({ onOpenReservation })
             </div>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

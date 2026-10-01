@@ -1,4 +1,4 @@
-import { MenuItem, GalleryItem, Review, FaqItem } from '../types';
+import { MenuItem, GalleryItem, Review, FaqItem, SeasonalIngredient } from '../types';
 
 export const ASSET_IMAGES = {
   hero: '/src/assets/images/hero_gastronomy_origem_1790825159415.jpg',
@@ -9,6 +9,9 @@ export const ASSET_IMAGES = {
   cocktail: '/src/assets/images/cocktail_brazil_copper_1790825226272.jpg',
   dessert: '/src/assets/images/dessert_cacau_cupuacu_1790825235124.jpg',
   kitchenPlating: '/src/assets/images/kitchen_plating_detail_1790825245098.jpg',
+  harvestCaju: '/src/assets/images/harvest_caju_brazil_1790826093181.jpg',
+  harvestJabuticaba: '/src/assets/images/harvest_jabuticaba_sabara_1790826104668.jpg',
+  harvestPupunha: '/src/assets/images/harvest_pupunha_mandioca_1790826114302.jpg',
 };
 
 export const MENU_CATEGORIES = [
@@ -346,3 +349,76 @@ export const RESTAURANT_INFO = {
     { days: 'Segunda-feira', hours: 'Fechado', period: 'Descanso da brigada' },
   ],
 };
+
+export const HARVEST_CYCLE_INFO = {
+  currentSeason: 'Ciclo de Primavera & Pré-Verão',
+  lunarPhase: 'Lua Crescente · Safra das Frutas e Seivas',
+  curatorQuote: 'Quando as chuvas chegam aos pomares e vales, o dulçor das frutas nativas e a tenrura dos brotos alcançam seu esplendor mineral.',
+};
+
+export const SEASONAL_INGREDIENTS: SeasonalIngredient[] = [
+  {
+    id: 'caju-selvagem',
+    name: 'Caju Vermelho & Cajuína Artesanal',
+    scientificName: 'Anacardium occidentale',
+    biome: 'Caatinga & Litoral Nordestino',
+    region: 'Piauí e Sertão Cearense',
+    peakPeriod: 'Setembro a Dezembro',
+    harvestCycle: 'Pico Máximo',
+    producer: 'Cooperativa dos Produtores de Cajuína Familiar (PI)',
+    description: 'Colhido à mão nas primeiras horas da manhã para preservar os açúcares naturais e o frescor floral do pseudofruto. A cajuína é clarificada em processo tradicional por decantação natural.',
+    curatorNote: 'Usamos tanto a carne fresca para o crudo de pescados brancos quanto a redução da cajuína clarificada para quebrar a gordura dos peixes costeiros sem necessitar de vinagres industriais.',
+    dishId: 'ent-1',
+    dishName: 'Crudo de Robalo com Cajuína e Pimenta-de-Cheiro',
+    imageUrl: ASSET_IMAGES.harvestCaju,
+    sensoryScores: {
+      acidez: 8.5,
+      docura: 7.2,
+      aromaterroso: 3.5,
+      mineralidade: 8.0,
+    },
+  },
+  {
+    id: 'jabuticaba-sabara',
+    name: 'Jabuticaba Sabará da Mantiqueira',
+    scientificName: 'Plinia cauliflora',
+    biome: 'Mata Atlântica de Altitude',
+    region: 'Serra da Mantiqueira, SP/MG',
+    peakPeriod: 'Outubro a Dezembro',
+    harvestCycle: 'Início de Safra',
+    producer: 'Sítio Três Vertentes — Agricultura Agroecológica',
+    description: 'Bagas colhidas diretamente do tronco em árvores centenárias. Casca espessa e arroxeada com altíssima concentração de taninos e antocianinas, equilibrada por polpa translúcida e explosiva.',
+    curatorNote: 'Trabalhamos a jabuticaba em dois estados: fresca e crua para notas florais e fermentada com fava de cumaru e rapadura para acompanhar carnes curadas na brasa e sobremesas.',
+    dishId: 'sob-3',
+    dishName: 'Sorvete Artesanal de Cumaru com Compota Quente de Jabuticaba',
+    imageUrl: ASSET_IMAGES.harvestJabuticaba,
+    sensoryScores: {
+      acidez: 9.0,
+      docura: 6.8,
+      aromaterroso: 4.0,
+      mineralidade: 7.5,
+    },
+  },
+  {
+    id: 'pupunha-mandioca',
+    name: 'Palmito Pupunha e Raízes Ancestrais',
+    scientificName: 'Bactris gasipaes & Manihot esculenta',
+    biome: 'Mata Atlântica & Vales Fluviais',
+    region: 'Vale do Ribeira, SP',
+    peakPeriod: 'Colheita Contínua Sustentável',
+    harvestCycle: 'Manejo Sustentável',
+    producer: 'Quilombo Ivaporunduva — Manejo Agroflorestal',
+    description: 'Cultivo sem corte predatório da palmeira-juçara, com hastes tenras colhidas sob manejo agroflorestal consciente. Mandiocas amarelas de polpa aveludada colhidas após 14 meses de terra.',
+    curatorNote: 'A base da nossa cozinha. O purê de raízes defumadas confere sustentação untuosa e acolhedora aos pescados grelhados em brasa viva.',
+    dishId: 'px-1',
+    dishName: 'Peixe da Costa (Prato Destaque)',
+    imageUrl: ASSET_IMAGES.harvestPupunha,
+    sensoryScores: {
+      acidez: 2.0,
+      docura: 5.5,
+      aromaterroso: 9.2,
+      mineralidade: 8.8,
+    },
+  },
+];
+

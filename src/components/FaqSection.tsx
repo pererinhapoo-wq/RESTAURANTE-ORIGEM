@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FAQ_ITEMS } from '../data/restaurantData';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -15,18 +17,28 @@ export const FaqSection: React.FC = () => {
       className="py-24 sm:py-32 relative transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-14 sm:mb-18 space-y-3">
-          <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
-            <HelpCircle size={14} />
-            Dúvidas Frequentes
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
-            Informações sobre a Visita
-          </h2>
-          <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light max-w-lg mx-auto">
-            Tudo o que você precisa saber para desfrutar da sua experiência gastronômica com total tranquilidade.
-          </p>
+        <AnimatedSection>
+        {/* Section Header with Title Reveal */}
+        <div className="mb-14 sm:mb-18">
+          <TitleReveal
+            align="center"
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center justify-center gap-2">
+                <HelpCircle size={14} />
+                Dúvidas Frequentes
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-3xl sm:text-5xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
+                Informações sobre a Visita
+              </h2>
+            }
+            subtitle={
+              <p className="text-sm sm:text-base text-[#526359] dark:text-[#a0aca1] font-light max-w-lg mx-auto">
+                Tudo o que você precisa saber para desfrutar da sua experiência gastronômica com total tranquilidade.
+              </p>
+            }
+          />
         </div>
 
         {/* Accordion List */}
@@ -64,6 +76,7 @@ export const FaqSection: React.FC = () => {
             );
           })}
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

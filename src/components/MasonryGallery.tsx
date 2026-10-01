@@ -3,6 +3,9 @@ import { GALLERY_ITEMS } from '../data/restaurantData';
 import { GalleryItem } from '../types';
 import { LightboxModal } from './LightboxModal';
 import { Maximize2, Camera } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { TitleReveal } from './TitleReveal';
+import { motion } from 'framer-motion';
 
 export const MasonryGallery: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
@@ -20,17 +23,22 @@ export const MasonryGallery: React.FC = () => {
       className="py-24 sm:py-32 relative transition-colors duration-300 border-t border-[#c58253]/15"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        <AnimatedSection>
+        {/* Editorial Section Header with Title Reveal */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="space-y-2">
-            <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
-              <Camera size={14} />
-              Narrativa Visual
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
-              Galeria da Experiência
-            </h2>
-          </div>
+          <TitleReveal
+            eyebrow={
+              <span className="text-xs uppercase tracking-[0.28em] text-[#c58253] font-semibold flex items-center gap-2">
+                <Camera size={14} />
+                Narrativa Visual
+              </span>
+            }
+            title={
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#12231c] dark:text-[#f7f5f0] font-light tracking-wide">
+                Galeria da Experiência
+              </h2>
+            }
+          />
 
           {/* Filter tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
@@ -81,8 +89,16 @@ export const MasonryGallery: React.FC = () => {
             }
 
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, scale: 0.92, y: 16 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: 0.75,
+                  delay: (idx % 3) * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 onClick={() => setSelectedItem(item)}
                 className={`relative group overflow-hidden rounded-xl cursor-pointer border border-[#c58253]/25 bg-[#0f1b15] shadow-md hover:shadow-xl transition-all duration-300 ${colSpan} ${heightClass}`}
                 role="button"
@@ -122,7 +138,7 @@ export const MasonryGallery: React.FC = () => {
                     {item.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -131,6 +147,7 @@ export const MasonryGallery: React.FC = () => {
         <p className="mt-8 text-center text-xs text-[#627368] dark:text-[#9ea89f] tracking-wide">
           Clique em qualquer imagem para abrir a visualização em alta definição com detalhes e notas de preparo.
         </p>
+        </AnimatedSection>
       </div>
 
       {/* Lightbox Modal */}

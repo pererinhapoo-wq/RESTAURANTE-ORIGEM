@@ -13,6 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenReservation }) => {
 
   const navLinks = [
     { label: 'Conceito', href: '#conceito' },
+    { label: 'Safra da Estação', href: '#safra' },
     { label: 'Cardápio', href: '#menu' },
     { label: 'Prato Destaque', href: '#destaque' },
     { label: 'Nossa Cozinha', href: '#cozinha' },
