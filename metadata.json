@@ -1,0 +1,6 @@
+{
+  "name": "ORIGEM — Cozinha Contemporânea",
+  "description": "Restaurante autoral de cozinha contemporânea brasileira. Da terra para a mesa. Da memória para o presente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,348 @@
+import { MenuItem, GalleryItem, Review, FaqItem } from '../types';
+
+export const ASSET_IMAGES = {
+  hero: '/src/assets/images/hero_gastronomy_origem_1790825159415.jpg',
+  peixeDaCosta: '/src/assets/images/dish_peixe_da_costa_1790825170475.jpg',
+  chefHelena: '/src/assets/images/chef_helena_duarte_1790825180765.jpg',
+  ambience: '/src/assets/images/restaurant_ambience_origem_1790825190590.jpg',
+  ingredients: '/src/assets/images/ingredients_brazil_slate_1790825199841.jpg',
+  cocktail: '/src/assets/images/cocktail_brazil_copper_1790825226272.jpg',
+  dessert: '/src/assets/images/dessert_cacau_cupuacu_1790825235124.jpg',
+  kitchenPlating: '/src/assets/images/kitchen_plating_detail_1790825245098.jpg',
+};
+
+export const MENU_CATEGORIES = [
+  'Entradas',
+  'Principais',
+  'Peixes',
+  'Carnes',
+  'Vegetais',
+  'Sobremesas',
+] as const;
+
+export const MENU_ITEMS: MenuItem[] = [
+  // ENTRADAS
+  {
+    id: 'ent-1',
+    name: 'Crudo de Robalo com Cajuína e Pimenta-de-Cheiro',
+    category: 'Entradas',
+    description: 'Lâminas finas de robalo fresco da costa, redução fria de cajuína artesanal do Piauí, óleo de coentro e crocante de castanha-do-pará.',
+    price: 68,
+    tags: ['Crudo', 'Sem Glúten'],
+    pairing: 'Harmoniza com espumante natural da Serra Gaúcha',
+  },
+  {
+    id: 'ent-2',
+    name: 'Dadinhos de Tapioca Trufados com Mel de Jataí e Urucum',
+    category: 'Entradas',
+    description: 'Queijo coalho artesanal de pequenos produtores da Paraíba, tapioca granulada tostada, infusão de mel nativo de abelha Jataí e pó de urucum defumado.',
+    price: 56,
+    tags: ['Vegetariano', 'Autoral'],
+    pairing: 'Harmoniza com coquetel autoral à base de cachaça envelhecida em amburana',
+  },
+  {
+    id: 'ent-3',
+    name: 'Vieiras Grelhadas com Creme de Pupunha e Tucupi Amarelo',
+    category: 'Entradas',
+    description: 'Vieiras nacionais braseadas, velouté sedoso de palmito pupunha fresco e emulsão reduzida de tucupi com folhas de jambu.',
+    price: 84,
+    tags: ['Frutos do Mar'],
+    pairing: 'Harmoniza com vinho branco Sauvignon Blanc do Vale dos Vinhedos',
+  },
+  {
+    id: 'ent-4',
+    name: 'Tartar de Carne de Sol Curada com Manteiga de Garrafa',
+    category: 'Entradas',
+    description: 'Corte bovino maturado na casa, gema caipira curada no sal de ervas, telha de pão fermentado artesanalmente e picles de maxixe.',
+    price: 64,
+    tags: ['Cura Própria'],
+    pairing: 'Harmoniza com cerveja artesanal sour de frutas nativas',
+  },
+
+  // PRINCIPAIS
+  {
+    id: 'pr-1',
+    name: 'Arroz Caldoso de Pato com Tucupi Preto e Jambu',
+    category: 'Principais',
+    description: 'Arroz bombita em cozimento lento de caldo de pato assado no forno a lenha, tucupi negro reduzido, magret grelhado ao ponto e folhas crocantes de jambu.',
+    price: 138,
+    tags: ['Clássico da Casa', 'Bioma Amazônico'],
+    pairing: 'Harmoniza com Pinot Noir brasileiro de altitude',
+  },
+  {
+    id: 'pr-2',
+    name: 'Nhoque de Mandioquinha Defumada com Velouté de Canastra',
+    category: 'Principais',
+    description: 'Massa artesanal leve de mandioquinha defumada na brasa, creme aveludado de Queijo da Canastra de cura de 60 dias e telha crocante de sálvia.',
+    price: 112,
+    tags: ['Vegetariano'],
+    pairing: 'Harmoniza com Chardonnay amadeirado de Santa Catarina',
+  },
+  {
+    id: 'pr-3',
+    name: 'Polvo na Brasa com Purê de Batata-Doce Roxa e Vinagrete de Cachaça',
+    category: 'Principais',
+    description: 'Tentáculos de polvo grelhados no carvão vegetal, purê aromático de batata-doce roxa, vinagrete morno com infusão de cachaça de alambique e crocante de tapioca.',
+    price: 146,
+    tags: ['Grelhado na Brasa'],
+    pairing: 'Harmoniza com vinho Rosé da Campanha Gaúcha',
+  },
+
+  // PEIXES
+  {
+    id: 'px-1',
+    name: 'Peixe da Costa (Prato Destaque)',
+    category: 'Peixes',
+    description: 'Peixe fresco grelhado, purê de raízes brasileiras, legumes tostados e molho cítrico da casa.',
+    price: 142,
+    highlight: true,
+    tags: ['Especialidade da Chef', 'Fresco do Dia'],
+    pairing: 'Harmoniza com Alvarinho do terroir de Pinto Bandeira',
+  },
+  {
+    id: 'px-2',
+    name: 'Pirarucu Selvagem em Crosta de Castanhas e Mousseline de Banana',
+    category: 'Peixes',
+    description: 'Lombo de pirarucu de manejo sustentável, crosta tostada de castanha-do-pará e baru, mousseline cremosa de banana-da-terra e glace agridoce de açaí branco.',
+    price: 156,
+    tags: ['Manejo Sustentável'],
+    pairing: 'Harmoniza com Viognier nacional estruturado',
+  },
+  {
+    id: 'px-3',
+    name: 'Robalo em Folha de Bananeira com Moqueca Contemporânea',
+    category: 'Peixes',
+    description: 'Filé de robalo assado na folha de bananeira com aromáticos nativos, emulsão leve de leite de coco artesanal, azeite de dendê filtrado e farofa dourada de biju.',
+    price: 138,
+    tags: ['Assado na Brasa'],
+    pairing: 'Harmoniza com vinho Riesling Itálico das Serras de Sudeste',
+  },
+
+  // CARNES
+  {
+    id: 'car-1',
+    name: 'Cupim Braseado por 16 Horas com Mil-Folhas de Mandioca',
+    category: 'Carnes',
+    description: 'Corte tradicional marinado em cachaça e especiarias nativas, cozido lentamente até desfiar na colher, mil-folhas crocante de mandioca amarela e demi-glace de rapadura.',
+    price: 148,
+    tags: ['Cocção Lenta 16h'],
+    pairing: 'Harmoniza com Tannat Reserva da Serra do Sudeste',
+  },
+  {
+    id: 'car-2',
+    name: 'Prime Rib de Porco Moura com Redução de Goiabada Cascão',
+    category: 'Carnes',
+    description: 'Carne suína de raça crioula brasileira grelhada com osso, glace aromático de goiabada cascão e pimenta-de-macaco, acompanhado de purê de cará e vinagrete de feijão fradinho.',
+    price: 134,
+    tags: ['Raça Moura Crioula'],
+    pairing: 'Harmoniza com Syrah de Inverno do Sudeste',
+  },
+  {
+    id: 'car-3',
+    name: 'Filé Mignon Curado com Mini-Arroz do Vale do Paraíba',
+    category: 'Carnes',
+    description: 'Tornedor selado na brasa, crosta de pimenta rosa, risoto cremoso de mini-arroz orgânico do Vale do Paraíba e lascas crocantes de queijo Tulha artesanal.',
+    price: 152,
+    tags: ['Queijo Tulha'],
+    pairing: 'Harmoniza com Cabernet Franc dos Campos de Cima da Serra',
+  },
+
+  // VEGETAIS
+  {
+    id: 'veg-1',
+    name: 'Cenouras Orgânicas Glaceadas no Melaço de Cana e Castanhas',
+    category: 'Vegetais',
+    description: 'Variedades de cenouras crioulas assadas na brasa, redução agridoce de melaço de cana de engenho familiar, creme aveludado de castanha-de-caju e sementes de mostarda nativa.',
+    price: 86,
+    tags: ['100% Vegetal', 'Orgânico'],
+    pairing: 'Harmoniza com infusão gelada artesanal de capim-santo e maracujá',
+  },
+  {
+    id: 'veg-2',
+    name: 'Cogumelos Yanomami Salteados sobre Polenta de Milho Crioulo',
+    category: 'Vegetais',
+    description: 'Mix de cogumelos desidratados coletados na Amazônia pelo povo Yanomami, polenta cremosa de milho crioulo moído na pedra e emulsão de ervas silvestres da nossa horta.',
+    price: 98,
+    tags: ['Comércio Justo', 'Bioma Amazônico'],
+    pairing: 'Harmoniza com Merlot orgânico brasileiro',
+  },
+  {
+    id: 'veg-3',
+    name: 'Abóbora Cabotiá na Brasa com Queijo de Cabra Artesanal',
+    category: 'Vegetais',
+    description: 'Gomos de cabotiá caramelizados com manteiga de garrafa, queijo de cabra fresco da serra da Mantiqueira, fios de mel cru de tiúba e sementes tostadas com sal marinho.',
+    price: 88,
+    tags: ['Vegetariano'],
+    pairing: 'Harmoniza com vinho laranja biodinâmico',
+  },
+
+  // SOBREMESAS
+  {
+    id: 'sob-1',
+    name: 'Esfera de Cacau Baiano 70% com Espuma de Cupuaçu',
+    category: 'Sobremesas',
+    description: 'Cúpula fina de chocolate de origem do Sul da Bahia, interior aveludado de ganache defumada, espuma aérea de cupuaçu e pralinê crocante de castanha-do-pará.',
+    price: 52,
+    tags: ['Cacau Nativo'],
+    pairing: 'Harmoniza com licor artesanal de cacau e cachaça envelhecida',
+  },
+  {
+    id: 'sob-2',
+    name: 'Mil-Folhas de Polvilho com Creme de Baunilha do Cerrado',
+    category: 'Sobremesas',
+    description: 'Camadas delicadas e translúcidas de biscoito de polvilho crocante, creme patissière infusionado com fava de baunilha nativa do Cerrado e redução fresca de pitanga.',
+    price: 48,
+    tags: ['Cerrado Vivo'],
+    pairing: 'Harmoniza com vinho de sobremesa colheita tardia',
+  },
+  {
+    id: 'sob-3',
+    name: 'Sorvete Artesanal de Cumaru com Compota Quente de Jabuticaba',
+    category: 'Sobremesas',
+    description: 'Sorvete preparado diariamente com fava aromática de cumaru (a baunilha da Amazônia), servido sobre compota morna de jabuticabas colhidas maduras e telha de tapioca.',
+    price: 46,
+    tags: ['Fava de Cumaru'],
+    pairing: 'Harmoniza com café especial filtrado no método V60',
+  },
+];
+
+export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'gal-1',
+    title: 'Autoral & Minimalista',
+    category: 'Prato',
+    description: 'O equilíbrio visual e textural que precede o primeiro contato com o paladar. O prato como suporte de narrativa viva.',
+    imageUrl: ASSET_IMAGES.hero,
+    aspect: 'landscape',
+  },
+  {
+    id: 'gal-2',
+    title: 'Peixe da Costa na Cerâmica Basáltica',
+    category: 'Prato',
+    description: 'Nossa criação símbolo: frescor do Atlântico sul combinado à cremosidade das raízes ancestrais brasileiras.',
+    imageUrl: ASSET_IMAGES.peixeDaCosta,
+    aspect: 'square',
+  },
+  {
+    id: 'gal-3',
+    title: 'O Silêncio da Sala',
+    category: 'Ambiente',
+    description: 'Paredes em verde profundo, iluminação pontual de cobre e mobiliário em madeira maciça nacional criam acolhimento intimista.',
+    imageUrl: ASSET_IMAGES.ambience,
+    aspect: 'landscape',
+  },
+  {
+    id: 'gal-4',
+    title: 'Origens da Terra',
+    category: 'Ingrediente',
+    description: 'Mandioca fresca, castanhas silvestres, urucum em grão e pimentas nativas: o coração dos nossos biomas.',
+    imageUrl: ASSET_IMAGES.ingredients,
+    aspect: 'square',
+  },
+  {
+    id: 'gal-5',
+    title: 'Mixologia de Biomas',
+    category: 'Bar',
+    description: 'Cachaças históricas de alambiques mineiros, espumas de maracujá da caatinga e gelo esculpido artesanalmente.',
+    imageUrl: ASSET_IMAGES.cocktail,
+    aspect: 'square',
+  },
+  {
+    id: 'gal-6',
+    title: 'Precisão em Cada Gesto',
+    category: 'Cozinha',
+    description: 'A dedicação silenciosa da brigada: cada folha de broto e cada gota de infusão são calibradas milimetricamente.',
+    imageUrl: ASSET_IMAGES.kitchenPlating,
+    aspect: 'portrait',
+  },
+  {
+    id: 'gal-7',
+    title: 'Cacau Baiano & Cupuaçu',
+    category: 'Prato',
+    description: 'Harmonia profunda entre o amargor do cacau fermentado e a acidez floral envolvente das frutas da mata.',
+    imageUrl: ASSET_IMAGES.dessert,
+    aspect: 'square',
+  },
+  {
+    id: 'gal-8',
+    title: 'Chef Helena Duarte',
+    category: 'Cozinha',
+    description: 'A mente e as mãos à frente do conceito gastronômico do ORIGEM.',
+    imageUrl: ASSET_IMAGES.chefHelena,
+    aspect: 'portrait',
+  },
+];
+
+export const REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    author: 'Maria Luiza Brandão',
+    role: 'Crítica Principal de Gastronomia',
+    publication: 'Guia Quatro Estações',
+    quote: 'Uma das interpretações mais poéticas e técnicas dos biomas brasileiros. A harmonia entre o tucupi e a brasa no ORIGEM é nada menos que memorável.',
+    rating: 5,
+    year: '2026',
+  },
+  {
+    id: 'rev-2',
+    author: 'Arthur Mendes',
+    role: 'Jornalista & Pesquisador Culinário',
+    publication: 'Caderno Paladar & Cultura',
+    quote: 'Helena Duarte alcançou um patamar raro: elevar ingredientes ancestrais com rigor cirúrgico sem perder a alma afetuosa e telúrica da nossa terra.',
+    rating: 5,
+    year: '2026',
+  },
+  {
+    id: 'rev-3',
+    author: 'Sofia Carvalhal',
+    role: 'Sommelière Internacional',
+    publication: 'Revista Terroir Contemporâneo',
+    quote: 'A experiência no ORIGEM transcende a técnica culinária. É sobre o tempo, a luz intimista e a reverência emocionante aos pequenos produtores nacionais.',
+    rating: 5,
+    year: '2025',
+  },
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: 'Como funciona a política de reservas e confirmação?',
+    answer: 'Aceitamos reservas com até 30 dias de antecedência através do nosso formulário online ou telefone. Confirmamos todas as solicitações via mensagem de WhatsApp ou contato telefônico em até 24 horas úteis. Mantemos uma tolerância de 15 minutos em relação ao horário agendado.',
+  },
+  {
+    question: 'O restaurante possui opções para vegetarianos, celíacos ou intolerantes?',
+    answer: 'Sim. Nosso menu possui uma seção inteira dedicada aos vegetais e biomas brasileiros, além de pratos com sinalização sem glúten e sem lactose. Ao solicitar sua reserva, informe suas restrições no campo de observações para que a equipe da Chef Helena prepare alternativas dedicadas.',
+  },
+  {
+    question: 'Existe código de vestimenta (dress code) no ORIGEM?',
+    answer: 'Sugerimos traje esporte fino ou casual sofisticado. Nosso ambiente é intimista e elegante, desenhado para que cada cliente se sinta plenamente confortável para vivenciar um jantar memorável.',
+  },
+  {
+    question: 'Há serviço de manobrista (valet) no local?',
+    answer: 'Sim, dispomos de serviço de valet cortesia com manobristas credenciados e seguro integral na entrada do restaurante durante todo o período de funcionamento.',
+  },
+  {
+    question: 'O espaço é acessível para pessoas com mobilidade reduzida?',
+    answer: 'Totalmente. O ORIGEM conta com rampa suave de acesso ao salão principal, sanitários adaptados e corredores amplos sem degraus para acolher todos com absoluto conforto e autonomia.',
+  },
+  {
+    question: 'Qual é a política para rolha de vinhos trazidos pelo cliente?',
+    answer: 'Permitimos que os clientes tragam até duas garrafas por mesa que não constem em nossa carta de vinhos, sob uma taxa de rolha de R$ 90 por garrafa de 750ml, com serviço completo de taças de cristal e decantação.',
+  },
+];
+
+export const RESTAURANT_INFO = {
+  name: 'ORIGEM',
+  subName: 'Cozinha Contemporânea',
+  tagline: 'Da terra para a mesa. Da memória para o presente.',
+  concept: 'ORIGEM nasceu do desejo de reinterpretar ingredientes brasileiros através de técnicas contemporâneas, respeitando suas histórias e valorizando aquilo que nasce perto de nós.',
+  address: 'Rua das Palmeiras, 184 — Jardim Aurora',
+  city: 'São Paulo, SP',
+  phone: '(11) 3289-4410',
+  instagram: '@origem.cozinha',
+  hours: [
+    { days: 'Terça a quinta', hours: '19h às 23h', period: 'Jantar' },
+    { days: 'Sexta e sábado', hours: '19h às 00h', period: 'Jantar' },
+    { days: 'Domingo', hours: '12h às 16h', period: 'Almoço' },
+    { days: 'Segunda-feira', hours: 'Fechado', period: 'Descanso da brigada' },
+  ],
+};
